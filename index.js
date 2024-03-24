@@ -14,10 +14,10 @@ const questions = [
 inquirer.prompt(questions).then((answers) => {
 let givenUrl = answers.url;
 console.log(`The URL is ${givenUrl}`);
-fs.writeFile('URL.txt', givenUrl, (err)=>{
-    if (err) throw err;
-  console.log("file saved");
-  let qr_png = qr.image(givenUrl, { type: 'png' });
+fs.writeFile('URL.txt', givenUrl, (err)=>{ //this so I don't forget the URL
+    if (err) throw err; //this so I don't forget the URL
+  console.log("URL saved to local text file"); //this so I don't forget the URL
+let qr_png = qr.image(givenUrl, { type: 'png' });
   qr_png.pipe(createWriteStream('qr_image_generated.png'));
 });
 }).catch(error => {
